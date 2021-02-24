@@ -28,17 +28,21 @@ function showCart() {
     let tbodyEl = document.getElementById('tbody');
 
     // TODO: Iterate over the items in the cart
-    const cartItems = JSON.parse(localStorage.getItem('cart'))
-    for (let i in cartItems) {
+    const cartItems = JSON.parse(localStorage.getItem('cart'));
+    console.log(cartItems);
+    for (let i = 0; i < cartItems.length; i++) {
         // TODO: Create a TR
         let trEl = document.createElement('tr');
+
         // TODO: Create a TD for the delete link, quantity,  and the item
         let tdEl1 = document.createElement('td');
         tdEl1.textContent = 'deleteLink';
         let tdEl2 = document.createElement('td');
         tdEl2.textContent = cartItems[i].quantity;
+        console.log(cartItems[i].quantity);
         let tdEl3 = document.createElement('td');
         tdEl3.textContent = cartItems[i].product;
+
         // TODO: Add the TR to the TBODY and each of the TD's to the TR
         tbodyEl.appendChild(trEl);
         trEl.appendChild(tdEl1);
