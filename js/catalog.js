@@ -6,14 +6,19 @@
 const cart = new Cart([]);
 
 // On screen load, we call this method to put all of the busmall options
-// (the things in the Product.allProducts array) into the drop down list.
+// (the things in the Product.allProducts array) into the drop down list
 function populateForm() {
 
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
-  for (let i in Product.allProducts) {
-
+  for (let i = 0; i < Product.allProducts.length; i++) {
+    const optionElement = document.createElement('option');
+    optionElement.textContent=Product.allProducts[i].name;
+    optionElement.value=Product.allProducts[i].name;
+    selectElement.appendChild(optionElement);
+    
   }
+    
 
 }
 
@@ -23,8 +28,8 @@ function populateForm() {
 function handleSubmit(event) {
 
   // TODO: Prevent the page from reloading
-
-  // Do all the things ...
+  event.preventDefault();
+    // Do all the things ...
   addSelectedItemToCart();
   cart.saveToLocalStorage();
   updateCounter();
@@ -34,18 +39,31 @@ function handleSubmit(event) {
 
 // TODO: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
-  // TODO: suss out the item picked from the select list
+// TODO: suss out the item picked from the select list
+const item=document.getElementById('items').name;
   // TODO: get the quantity
+  const quantity=document.getElementById('quantity').value;
   // TODO: using those, add one item to the Cart
+  cart.addItem(item, quantity);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+function updateCounter() {
+  document.getElementById('itemCount').textContent = cart.items.length ;
+  console.log(cart.items.length);
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  
   // TODO: Add a new element to the cartContents div with that information
+  const cartContents = document.getElementById("cartContents");
+  const optionElement = document.createElement('option');
+  optionElement.textContent=Product.allProducts[i].name;
+  optionElement.value=Product.allProducts[i].name;
+  selectElement.appendChild(optionElement);
+
 }
 
 // Set up the "submit" event listener on the form.
