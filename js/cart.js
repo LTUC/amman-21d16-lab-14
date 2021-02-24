@@ -1,7 +1,7 @@
 /* global Cart */
 'use strict';
 
-// Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
+ //Create an event listener so that when the delete link is clicked, the removeItemFromCart method is invoked.
 const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 let cart;
@@ -18,26 +18,51 @@ function renderCart() {
   showCart();
 }
 
-// TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+// TODO: Remove items.the rows (tr) in the cart table (tbody)
+function clearCart() {
+  document.getElementsByTagName('tr').innerHTML="";
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
 
-  // TODO: Find the table body
+   //TODO: Find the table body
+   const tbody =document.getElementsByTagName('tbody');
 
   // TODO: Iterate over the items in the cart
-  // TODO: Create a TR
-  // TODO: Create a TD for the delete link, quantity,  and the item
-  // TODO: Add the TR to the TBODY and each of the TD's to the TR
 
+  for (let i=0 ;i< Cart.items.length;i++){
+  // TODO: Create a TR
+  let tr=document.createElement('tr');
+    tr.setAttribute('cartContent',i);
+    tbody.appendChild('tr');
+
+  // TODO: Create a TD for the delete link, quantity,  and the item
+
+  let tdRemove =document.createElement('td');
+  tdRemove.textContent='X';
+  tr.appendChild(tdRemove);
+  let quantityTd =document.createElement('td');
+  quantityTd.textContent=Cart.items[i].quantity;
+   let itemTd=document.createElement('td');
+   itemTd.textContent=Cart.items[i].product;
+  
+   //TODO: Add the TR to the TBODY and each of the TD's to the TR
+   tr.appendChild(itemTd);
+
+}
 }
 
 function removeItemFromCart(event) {
 
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+  if (event.target.textContent==='X'){
+    Cart.removeItemFromCart(event.target.id);
+  }
   // TODO: Save the cart back to local storage
-  // TODO: Re-draw the cart table
+  localStorage.setItem('Cart',JSON.stringify(Cart.items)); // TODO: Re-draw the cart table
+    renderCart();
+
 
 }
 
