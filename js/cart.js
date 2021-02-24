@@ -22,7 +22,7 @@ function renderCart() {
 function clearCart() {
   const container = document.getElementById('cart');
   for (let i = 0; i < container.rows.length; i++) {
-    container.deleteRow(0);    
+    container.deleteRow(0);
   }
 }
 
@@ -36,10 +36,10 @@ function showCart() {
     const tableRow = document.createElement('tr');
     table.appendChild(tableRow);
     console.log(tableRow.rows.length);
-      for (let j = 0; j < tableRow.rows.length; j++) {
-        const tableCell = document.createElement('td');
-        tableRow.appendChild(tableCell);        
-      } 
+    for (let j = 0; j < tableRow.rows.length; j++) {
+      const tableCell = document.createElement('td');
+      tableRow.appendChild(tableCell);
+    }
   }
   // TODO: Create a TR
   // TODO: Create a TD for the delete link, quantity,  and the item
