@@ -28,6 +28,9 @@ function showCart() {
     let tbodyEl = document.getElementById('tbody');
 
     // TODO: Iterate over the items in the cart
+    for () {
+
+    }
     // TODO: Create a TR
     let trEl = document.createElement('tr');
     // TODO: Create a TD for the delete link, quantity,  and the item
@@ -48,8 +51,12 @@ function showCart() {
 function removeItemFromCart(event) {
 
     // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
+    removedItem = event.target.value;
+    cart.removeItem(removedItem);
     // TODO: Save the cart back to local storage
+    cart.saveToLocalStorage();
     // TODO: Re-draw the cart table
+    showCart();
 
 }
 
