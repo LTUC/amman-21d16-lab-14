@@ -58,11 +58,10 @@ function removeItemFromCart(event) {
  }
 localStorage.setItem('cart',JSON.stringify(cart.items));
   renderCart();
-
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
 }
 
-// This will initialize the page and draw the cart on screen
+// This will initialize the page and draw the cart on screen ll
 renderCart();
