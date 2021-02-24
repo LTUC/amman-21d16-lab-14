@@ -69,7 +69,9 @@ function removeItemFromCart(event) {
   }
   
   // TODO: Save the cart back to local storage
- 
+ localStorage.setItem('cart',JSON.stringify(cart.items));
+//  TODO: re-draw the cart table 
+ renderCart();
 
 }
 
