@@ -29,9 +29,9 @@ function handleSubmit(event) {
   event.preventDefault();
   // Do all the things ...
   addSelectedItemToCart();
+  cart.saveToLocalStorage();
   console.log(cart)
   // console.log(addItem)
-  cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
   // document.getElementById('items').value;
@@ -60,15 +60,15 @@ function addSelectedItemToCart() {
 
 
 // // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
-//   function updateCartPreview() {
+  function updateCartPreview() {
 
-//     let cartCont = document.getElementById('cartContents');
-//     cartCont.innerHTML ='';
+    let cartCont = document.getElementById('cartContents');
+    cartCont.innerHTML ='';
   
-//     // TODO: Add a new element to the cartContents div with that information
-//     for(let i = 0; i <cart.items.length; i++){
-//       cartCont.textContent +=  `(${cart.items[i].product}, ${cart.items[i].quantity})`;
-//     }}
+    // TODO: Add a new element to the cartContents div with that information
+    for(let i = 0; i <cart.items.length; i++){
+      cartCont.textContent +=  `(${cart.items[i].product}, ${cart.items[i].quantity})`;
+    }}
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
