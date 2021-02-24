@@ -4,8 +4,7 @@
 const table = document.getElementById('cart');
 table.addEventListener('click', removeItemFromCart);
 let cart;
-// let deleteLink = document.getElementsByTagName("div")[1].copy;
-// deleteLink.addEventListener();
+
 function loadCart() {
   const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
   cart = new Cart(cartItems);
@@ -18,13 +17,15 @@ function renderCart() {
 }
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
 function clearCart() {
-document.getElementsByTagName('tr').innerHTML = '';
+while (table.lastchild) {
+  table.removeChild(table.lastChild)
+}
 }
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 let arr= [];
 function showCart() {
  
-  for (let i = 0; i < Cart.length; i++) {
+  for (let i = 0; i < cart.items.length; i++) {
      arr= localStorage.getItem(localStorage.key(0));
     let row = document.createElement('tr');
     table.appendChild(row);
@@ -35,7 +36,9 @@ function showCart() {
     let deleteBtn = document.createElement('input');
     deleteBtn.type = "button";
     El3.appendChild(deleteBtn);
-    El3.addEventListener('click',removeItemFromCart());
+    El3.id = 'delete';
+    El3.textContent = 'X'
+
     
     let El2 = document.createElement('td');
     row.appendChild(El2);
@@ -53,24 +56,10 @@ function showCart() {
   // TODO: Add the TR to the TBODY and each of the TD's to the TR
 }
 
-
 function removeItemFromCart(event) {
-  event.preventDefault();
-
-  if (event.target.textContent === 'x') {
-    cart.removeItem(event.target.id);  }
-
+  cart.removeItem(event.target.id);
   cart.saveToLocalStorage();
-
-  renderCart();
-
-}
-// function removeItemFromCart(event) {
-//   if (event.target.textContent === 'X') {
-//     cart.removeItem(event..id);
-//   }
-//   localStorage.setItem('cart', JSON.stringify(cart.items));
-//   renderCart();
+  renderCart();}
 //   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
