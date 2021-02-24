@@ -11,16 +11,14 @@ function populateForm() {
 
   // TODO: Add an <option> tag inside the form's select for each product
 
-  const selectItem = document.getElementById('items');
+ 
 
   for (let i = 0 ; i < Product.allProducts.length ; i++ ) {
-
-    const optionEl = document.createElement('option');
+    let selectItem = document.getElementById('items');
+    let optionEl = document.createElement('option');
     optionEl.textContent = Product.allProducts[i].name;
     optionEl.value=Product.allProducts[i].name;
     selectItem.appendChild(optionEl);
-    
-
 
   }
 
@@ -36,10 +34,11 @@ function handleSubmit(event) {
   event.preventDefault();
   
 // Do all the things ...
-  addSelectedItemToCart();
+  addSelectedItemToCart(event);
   cart.saveToLocalStorage();
   updateCounter();
   updateCartPreview();
+  event.target.reset();
 
 }
 
@@ -47,39 +46,40 @@ function handleSubmit(event) {
 
 function addSelectedItemToCart() {
 
-  
-
   const selectItem = document.getElementById('items');
   const selectName = selectItem.options[selectItem.selectedIndex].value;
   console.log(selectName);
-
-
   // TODO: suss out the item picked from the select list
-  // let selectFilePath ;
-// debugger;
+
 // TODO: get the quantity
-debugger;
+
 let quantityEl = document.getElementById('quantity');
 let getQuantity = parseInt(quantityEl.value);
-new CartItem(selectName,getQuantity);
 
-localStorage.setItem('cartitem', JSON.stringify(CartItem.allitems));
+
+
+
+  cart.addItem(selectName,getQuantity);
+
+  // TODO: suss out the item picked from the select list
+ 
+
+// TODO: get the quantity
+
+
+
+
   // TODO: using those, add one item to the Cart
 
-  // new Cart(selectName, selectFilePath, getQuantity);
 }
 
 // TODO: Update the cart count in the header nav with the number of items in the Cart
-const itemCounter = 0;
+
 function updateCounter() {
-debugger;
-  // const quantityEl = document.getElementById('quantity');
-  // itemCounter += parseInt(quantityEl.value);
 
   const spanEl = document.getElementById('itemCount');
-  spanEl.textContent = CartItem.allitems.length;
+  spanEl.textContent = cart.items.length;
   
-
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
