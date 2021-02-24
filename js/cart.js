@@ -19,7 +19,14 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+    const cartItems = JSON.parse(localStorage.getItem('cart'));
+
+    for (let i = 0; i < cartItems.length; i++) {
+        // table.deleteRow(i);
+    }
+
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
@@ -62,11 +69,15 @@ function showCart() {
 
 function removeItemFromCart(event) {
 
+    const cartItems = JSON.parse(localStorage.getItem('cart'));
+
     // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
-    removedItem = event.target.value;
+    let removedItem = cartItems[event.target.cellIndex];
     cart.removeItem(removedItem);
+
     // TODO: Save the cart back to local storage
     cart.saveToLocalStorage();
+
     // TODO: Re-draw the cart table
     showCart();
 
