@@ -65,3 +65,4 @@ localStorage.setItem('cart',JSON.stringify(cart.items));
 
 // This will initialize the page and draw the cart on screen ll
 renderCart();
+
