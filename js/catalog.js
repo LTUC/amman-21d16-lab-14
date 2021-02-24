@@ -64,7 +64,7 @@ function updateCartPreview(event) {
   const item = event.target.items.value;
   const quantity = event.target.quantity.value;
   let message = document.getElementById('cartContents');
-  message.innerHTML= quantity +' of '+item+ ' have been added to <a href="/cart.html">cart </a>.' 
+  message.innerHTML= quantity +' of '+item+ ' have been added to <a href="./cart.html">cart</a>.' 
  }
 
 // Set up the "submit" event listener on the form.
