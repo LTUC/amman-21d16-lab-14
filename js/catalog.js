@@ -8,13 +8,12 @@ const cart = new Cart([]);
 // On screen load, we call this method to put all of the busmall options
 // (the things in the Product.allProducts array) into the drop down list.
 function populateForm() {
-
+                 
   //TODO: Add an <option> tag inside the form's select for each product
   const selectElement = document.getElementById('items');
   for (let i in Product.allProducts) {
 
   }
-
 }
 
 // When someone submits the form, we need to add the selected item to the cart
