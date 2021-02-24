@@ -160,8 +160,7 @@ label span {
 }
 
 .card#cartContents {
-  background: #f5f5f5;
-  padding: 1.5em;
+  background: #fae7e3;
   box-shadow: 0 3px 2px #777;
 }
 
@@ -198,4 +197,19 @@ label span {
 #cart tr td:first-child {
   color: red;
   cursor: pointer;
+}
+.cart#cartContents{
+ 
+
+}
+#cartContents ul li{
+  padding: 5px;
+  color:#f16971 ;
+  background-color:#fae7e3;
+  text-align: center;
+}
+#cartContents ul li:hover{
+  color: #fae7e3;
+  background-color:#f16971 ;
+  font-size: 25px;
 }
