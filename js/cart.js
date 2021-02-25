@@ -7,7 +7,7 @@ table.addEventListener('click', removeItemFromCart);
 let cart;
 
 function loadCart() {
-  const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+  const cartItems = JSON.parse(localStorage.getItem('carts')) || [];
   cart = new Cart(cartItems);
 }
 
@@ -19,7 +19,10 @@ function renderCart() {
 }
 
 // TODO: Remove all of the rows (tr) in the cart table (tbody)
-function clearCart() {}
+function clearCart() {
+document.getElementsByTagName('tbody')[0].innerHTML="";
+//console.log(document.getElementsByTagName('tbody')[0]);
+}
 
 // TODO: Fill in the <tr>'s under the <tbody> for each item in the cart
 function showCart() {
@@ -30,11 +33,39 @@ function showCart() {
   // TODO: Create a TR
   // TODO: Create a TD for the delete link, quantity,  and the item
   // TODO: Add the TR to the TBODY and each of the TD's to the TR
+ const tableBody=document.getElementsByTagName('tbody')[0];
+ //console.log(tableBody);
+ for(let i=0 ; i< cart.items.length;i++){
 
+   const trEl= document.createElement('tr')
+   tableBody.appendChild(trEl)
+
+   const tdEl = document.createElement('td');
+   trEl.appendChild(tdEl);
+   //console.log('hi');
+ tdEl.setAttribute('id' ,i);
+tdEl.textContent = 'x';
+const tdTwo = document.createElement('td');
+trEl.appendChild(tdTwo);
+tdTwo.textContent= cart.items[i].quantity;
+const td3 = document.createElement('td');
+trEl.appendChild(td3);
+td3.textContent= cart.items[i].product;
+
+
+
+ }
 }
 
 function removeItemFromCart(event) {
+const item = event.target.id
+console.log('this is' ,item);
 
+if (item !== ''){
+  cart.removeItem(item)
+  cart.saveToLocalStorage();
+  renderCart();
+}
   // TODO: When a delete link is clicked, use cart.removeItem to remove the correct item
   // TODO: Save the cart back to local storage
   // TODO: Re-draw the cart table
