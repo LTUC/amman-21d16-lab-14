@@ -72,6 +72,7 @@ function updateCartPreview() {
     liEl.textContent=` -${cart.items[i].product} : ${cart.items[i].quantity}.`
     
   }
+  //console.log(cartPlace.textContent,cartPlace.innerHTML);
 }
 
 // Set up the "submit" event listener on the form.
