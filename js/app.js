@@ -4,6 +4,7 @@
 const Cart = function (items) {
   // this.items is an array of CartItem instances.
   this.items = items;
+
 };
 
 Cart.prototype.addItem = function (product, quantity) {
@@ -13,7 +14,7 @@ Cart.prototype.addItem = function (product, quantity) {
 
 Cart.prototype.saveToLocalStorage = function () {
   // TODO: Fill in this instance method to save the contents of the cart to localStorage
-  localStorage.setItem(JSON.stringify(this.items));
+  localStorage.setItem('orders', JSON.stringify(this.items));
 };
 
 Cart.prototype.removeItem = function (item) {
@@ -27,7 +28,7 @@ const CartItem = function (product, quantity) {
   this.quantity = quantity;
 };
 
-// Product contructor.
+// Product constructor.
 const Product = function (filePath, name) {
   this.filePath = filePath;
   this.name = name;
@@ -35,6 +36,7 @@ const Product = function (filePath, name) {
 };
 Product.allProducts = [];
 
+// console.log(Product.allProducts);
 function generateCatalog() {
   new Product('assets/bag.jpg', 'Bag');
   new Product('assets/banana.jpg', 'Banana');
@@ -60,3 +62,4 @@ function generateCatalog() {
 
 // Initialize the app by creating the big list of products with images and names
 generateCatalog();
+
