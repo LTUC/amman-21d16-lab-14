@@ -7,19 +7,21 @@ const Cart = function (items) {
 };
 
 Cart.prototype.addItem = function (product, quantity) {
-  // TODO: Fill in this instance method to create a new CartItem and add it to this.items
-  this.items.push(new CartItem(product, quantity));
+  const newItem = new CartItem(product, quantity);
+  this.items.push(newItem);
 };
 
 Cart.prototype.saveToLocalStorage = function () {
-  // TODO: Fill in this instance method to save the contents of the cart to localStorage
-  localStorage.setItem(JSON.stringify(this.items));
+  localStorage.setItem('cart', JSON.stringify(this.items));
 };
 
 Cart.prototype.removeItem = function (item) {
-  // TODO: Fill in this instance method to remove one item from the cart.
-  // Note: You will have to decide what kind of parameter to pass in here!
+  // In this implementation, the item parameter is the index of the item to be removed.
   this.items.splice(item, 1);
+};
+
+Cart.prototype.updateCounter = function () {
+  document.getElementById('itemCount').textContent = '(' + this.items.length + ')';
 };
 
 const CartItem = function (product, quantity) {
@@ -36,26 +38,26 @@ const Product = function (filePath, name) {
 Product.allProducts = [];
 
 function generateCatalog() {
-  new Product('assets/bag.jpg', 'Bag');
-  new Product('assets/banana.jpg', 'Banana');
-  new Product('assets/bathroom.jpg', 'Bathroom');
-  new Product('assets/boots.jpg', 'Boots');
-  new Product('assets/breakfast.jpg', 'Breakfast');
-  new Product('assets/bubblegum.jpg', 'Bubblegum');
-  new Product('assets/chair.jpg', 'Chair');
-  new Product('assets/cthulhu.jpg', 'Cthulhu');
-  new Product('assets/dog-duck.jpg', 'Dog-Duck');
-  new Product('assets/dragon.jpg', 'Dragon');
-  new Product('assets/pen.jpg', 'Pen');
-  new Product('assets/pet-sweep.jpg', 'Pet Sweep');
-  new Product('assets/scissors.jpg', 'Scissors');
-  new Product('assets/shark.jpg', 'Shark');
-  new Product('assets/sweep.png', 'Sweep');
-  new Product('assets/tauntaun.jpg', 'Taun-Taun');
-  new Product('assets/unicorn.jpg', 'Unicorn');
-  new Product('assets/usb.gif', 'USB');
-  new Product('assets/water-can.jpg', 'Water Can');
-  new Product('assets/wine-glass.jpg', 'Wine Glass');
+  new Product('assets/bag.jpg', 'bag');
+  new Product('assets/banana.jpg', 'banana');
+  new Product('assets/bathroom.jpg', 'bathroom');
+  new Product('assets/boots.jpg', 'boots');
+  new Product('assets/breakfast.jpg', 'breakfast');
+  new Product('assets/bubblegum.jpg', 'bubblegum');
+  new Product('assets/chair.jpg', 'chair');
+  new Product('assets/cthulhu.jpg', 'cthulhu');
+  new Product('assets/dog-duck.jpg', 'dog-duck');
+  new Product('assets/dragon.jpg', 'dragon');
+  new Product('assets/pen.jpg', 'pen');
+  new Product('assets/pet-sweep.jpg', 'pet-sweep');
+  new Product('assets/scissors.jpg', 'scissors');
+  new Product('assets/shark.jpg', 'shark');
+  new Product('assets/sweep.png', 'sweep');
+  new Product('assets/tauntaun.jpg', 'tauntaun');
+  new Product('assets/unicorn.jpg', 'unicorn');
+  new Product('assets/usb.gif', 'usb');
+  new Product('assets/water-can.jpg', 'water-can');
+  new Product('assets/wine-glass.jpg', 'wine-glass');
 }
 
 // Initialize the app by creating the big list of products with images and names
